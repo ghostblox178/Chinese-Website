@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>反馈/title>
+    <title>反馈</title> <!-- 修复了闭合标签错误 -->
     <style>
-        /* Einfaches, responsives Styling */
+        /* 简洁的响应式样式 */
         body {
             font-family: Arial, sans-serif;
             max-width: 600px;
@@ -39,11 +39,11 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1rem;
-            box-sizing: border-box; /* Verhindert Überlappung */
+            box-sizing: border-box;
         }
         textarea {
             min-height: 120px;
-            resize: vertical; /* Nur vertikales Zoomen erlauben */
+            resize: vertical;
         }
         button {
             width: 100%;
@@ -59,14 +59,14 @@
         button:hover {
             background-color: #34495e;
         }
-        /* 发送成功 (standardmäßig versteckt) */
+        /* 发送成功提示（默认隐藏） */
         .success-message {
             margin-top: 1rem;
             padding: 1rem;
             background-color: #d4edda;
             color: #155724;
             border-radius: 4px;
-            display: none; /* Wird per JS sichtbar, wenn gesendet */
+            display: none;
         }
     </style>
 </head>
@@ -74,65 +74,64 @@
     <div class="form-container">
         <h2>你的反馈对我很重要</h2>
         
-        <!-- Feedback-Formular: sendet an DEINE E-Mail -->
+        <!-- 反馈表单：发送到指定邮箱 -->
         <form id="feedbackForm" action="mailto:hanyicraft@gmail.com" method="post" enctype="text/plain">
-            <!-- Name-Feld -->
+            <!-- 姓名字段 -->
             <div class="form-group">
                 <label for="name">你的名字 *</label>
-                <input type="text" id="name" name="Name" required placeholder="请填你的名字">
+                <input type="text" id="name" name="姓名" required placeholder="请填写你的名字">
             </div>
 
-            <!-- E-Mail-Feld (damit du antworten kannst) -->
+            <!-- 邮箱字段（方便回复） -->
             <div class="form-group">
-                <label for="email">你的邮件 *</label>
-                <input type="email" id="email" name="邮件" required placeholder="输入你的邮件地址例如 ( max@beispiel.com)">
+                <label for="email">你的邮箱 *</label>
+                <input type="email" id="email" name="邮箱" required placeholder="例如：your@email.com">
             </div>
 
-            <!-- Feedback-Thema (optional, aber hilfreich) -->
+            <!-- 反馈主题（可选，但有助于分类） -->
             <div class="form-group">
-                <label for="topic">Thema des Feedbacks</label>
-                <input type="text" id="topic" name="Thema" placeholder="z. B. Verbesserungsvorschlag, Lob">
+                <label for="topic">反馈主题</label> <!-- 改为中文标签 -->
+                <input type="text" id="topic" name="主题" placeholder="例如：建议、表扬、问题"> <!-- 改为中文提示 -->
             </div>
 
-            <!-- Feedback-Nachricht -->
+            <!-- 反馈内容 -->
             <div class="form-group">
                 <label for="message">你的反馈 *</label>
-                <textarea id="message" name="反馈信息" required placeholder="跟我们说你的反馈"></textarea>
+                <textarea id="message" name="反馈内容" required placeholder="请告诉我们你的想法..."></textarea>
             </div>
 
-            <!-- Absenden-Button -->
-            <button type="submit">Feedback absenden</button>
+            <!-- 提交按钮（改为中文） -->
+            <button type="submit">提交反馈</button>
 
-            <!-- Erfolg-Meldung -->
+            <!-- 成功提示 -->
             <div class="success-message" id="successMsg">
                 非常感谢您的反馈，我们已经收到了！
             </div>
         </form>
     </div>
 
-    <!-- Optional: JavaScript für Erfolg-Meldung -->
     <script>
         const form = document.getElementById('feedbackForm');
         const successMsg = document.getElementById('successMsg');
 
         form.addEventListener('submit', function(e) {
-            // Verhindert, dass die Seite neu lädt (nur für die Meldung)
-            e.preventDefault();
+            e.preventDefault(); // 阻止表单默认提交行为（避免页面刷新）
             
-            // Zeige die Erfolg-Meldung an
+            // 显示成功提示
             successMsg.style.display = 'block';
             
-            // Optional: Setze das Formular zurück nach 3 Sekunden
+            // 5秒后重置表单并隐藏提示
             setTimeout(() => {
                 form.reset();
                 successMsg.style.display = 'none';
             }, 5000);
 
-            // Sende die E-Mail (nur wenn der Nutzer einen E-Mail-Client hat)
-            // Der originale "mailto"-Vorgang wird hier manuell ausgelöst
-            window.location.href = form.action + '?subject=Neues Feedback: ' + document.getElementById('topic').value;
+            // 手动触发邮件发送（依赖用户本地邮箱客户端）
+            // 处理主题为空的情况，避免链接错误
+            const topic = document.getElementById('topic').value || '无主题';
+            window.location.href = `${form.action}?subject=新反馈：${topic}`;
         });
     </script>
 </body>
-
 </html>
+
