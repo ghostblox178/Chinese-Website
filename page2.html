@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback-Formular</title>
+    <title>反馈/title>
     <style>
         /* Einfaches, responsives Styling */
         body {
@@ -59,7 +59,7 @@
         button:hover {
             background-color: #34495e;
         }
-        /* Erfolg-Meldung (standardmäßig versteckt) */
+        /* 发送成功 (standardmäßig versteckt) */
         .success-message {
             margin-top: 1rem;
             padding: 1rem;
@@ -72,20 +72,20 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Dein Feedback ist wichtig!</h2>
+        <h2>你的反馈对我很重要</h2>
         
         <!-- Feedback-Formular: sendet an DEINE E-Mail -->
         <form id="feedbackForm" action="mailto:hanyicraft@gmail.com" method="post" enctype="text/plain">
             <!-- Name-Feld -->
             <div class="form-group">
-                <label for="name">Dein Name *</label>
-                <input type="text" id="name" name="Name" required placeholder="Gib deinen Namen ein">
+                <label for="name">你的名字 *</label>
+                <input type="text" id="name" name="Name" required placeholder="请填你的名字">
             </div>
 
             <!-- E-Mail-Feld (damit du antworten kannst) -->
             <div class="form-group">
-                <label for="email">Deine E-Mail *</label>
-                <input type="email" id="email" name="E-Mail" required placeholder="Gib deine E-Mail ein (z. B. max@beispiel.com)">
+                <label for="email">你的邮件 *</label>
+                <input type="email" id="email" name="邮件" required placeholder="输入你的邮件地址例如 ( max@beispiel.com)">
             </div>
 
             <!-- Feedback-Thema (optional, aber hilfreich) -->
@@ -96,8 +96,8 @@
 
             <!-- Feedback-Nachricht -->
             <div class="form-group">
-                <label for="message">Dein Feedback *</label>
-                <textarea id="message" name="Feedback-Nachricht" required placeholder="Erzähle uns, was du denkst..."></textarea>
+                <label for="message">你的反馈 *</label>
+                <textarea id="message" name="反馈信息" required placeholder="跟我们说你的反馈"></textarea>
             </div>
 
             <!-- Absenden-Button -->
@@ -105,7 +105,7 @@
 
             <!-- Erfolg-Meldung -->
             <div class="success-message" id="successMsg">
-                Danke für dein Feedback! Wir haben es erhalten und melden uns ggf. bei dir.
+                非常感谢您的反馈，我们已经收到了！
             </div>
         </form>
     </div>
@@ -134,4 +134,5 @@
         });
     </script>
 </body>
+
 </html>
